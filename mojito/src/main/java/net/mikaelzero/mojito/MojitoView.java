@@ -174,7 +174,7 @@ public class MojitoView extends FrameLayout {
 
     private void setOriginParams() {
         int[] locationImage = new int[2];
-        contentLayout.getLocationOnScreen(locationImage);
+        contentLayout.getLocationInWindow(locationImage);
         targetEndLeft = 0;
         if (screenWidth / (float) screenHeight < realWidth / (float) realHeight) {
             targetImageWidth = screenWidth;
@@ -627,7 +627,7 @@ public class MojitoView extends FrameLayout {
             return false;
         }
         int[] location = new int[2];
-        view.getLocationOnScreen(location);
+        view.getLocationInWindow(location);
         int left = location[0];
         int top = location[1];
         int right = left + view.getMeasuredWidth();

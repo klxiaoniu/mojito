@@ -28,13 +28,16 @@ public final class ScreenUtils {
     }
 
     /**
-     * Return the width of screen, in pixel.
+     * Return the width of screen (Window width for Android R+), in pixel.
      *
-     * @return the width of screen, in pixel
+     * @return the width of screen (Window width for Android R+), in pixel
      */
     public static int getScreenWidth(Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         if (wm == null) return -1;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            return wm.getCurrentWindowMetrics().getBounds().width();
+        }
         Point point = new Point();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             wm.getDefaultDisplay().getRealSize(point);
@@ -45,13 +48,16 @@ public final class ScreenUtils {
     }
 
     /**
-     * Return the height of screen, in pixel.
+     * Return the height of screen (Window height for Android R+), in pixel.
      *
-     * @return the height of screen, in pixel
+     * @return the height of screen (Window height for Android R+), in pixel
      */
     public static int getScreenHeight(Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         if (wm == null) return -1;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            return wm.getCurrentWindowMetrics().getBounds().height();
+        }
         Point point = new Point();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             wm.getDefaultDisplay().getRealSize(point);

@@ -105,7 +105,7 @@ class MojitoBuilder {
                 imageBean.height = 0
             } else {
                 val location = IntArray(2)
-                imageView.getLocationOnScreen(location)
+                imageView.getLocationInWindow(location)
                 imageBean.left = location[0]
                 imageBean.top = location[1]
                 imageBean.width = imageView.width
